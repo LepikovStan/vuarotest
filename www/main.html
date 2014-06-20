@@ -7,7 +7,47 @@
     <script data-main="/js/main" src="/js/require.js"></script>
 </head>
 
-<body>
+<style>
+	.list__elem {
+		width: 50%;
+	}
+
+	.list__elem .button {
+		float: right;
+	}
 	
+	.cart {
+		float: right;
+	}
+</style>
+
+<body>
+	<div class="cart">
+		В корзине
+		<script id="addedGoods" type="text/x-handlebars-template">
+			{{addedGoods}}
+		</script>
+		<script id="addedGoodsList" type="text/x-handlebars-template">
+			<ul>
+				{{#each goods}}
+					<li>{{name}}</li>
+				{{/each}}
+				
+				{{#if addedGoods}}
+					<button>Отправить</button>
+				{{/if}}
+			</ul>
+		</script>
+		<span class="addedGoods"></span>
+		<span class="addedGoodsList"></span>
+	</div>
+	<ul class="list">
+	    <script id="list" type="text/x-handlebars-template">
+			<li class="list__elem list__elem-{{id}}">
+			   <button class="button" data-id="{{id}}">{{#if inCart}}Из корзины{{else}}В корзину{{/if}}</button>
+			   <h2>{{name}}</h2>
+			</li>
+	    </script>
+	</ul>
 </body>
 </html>
